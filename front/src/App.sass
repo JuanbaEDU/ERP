@@ -10,21 +10,33 @@ $font-stack: Arial, sans-serif
 
 // Estilos para la barra de navegación
 nav
+    position: fixed
+    top: 0
+    width: 100%
+    z-index: 100
     background-color: $color-primary
     padding: 1rem
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1)
 
     ul
         list-style: none
         padding: 0
         margin: 0
         display: flex
-        justify-content: flex-start
+        justify-content: center
 
         li
             margin-right: 1rem
+            transition: transform 0.3s ease
+
+            &:hover
+                transform: scale(1.1)
+
             a
                 color: white
                 text-decoration: none
+                transition: color 0.3s ease
+
                 &:hover
                     color: $color-secondary
 

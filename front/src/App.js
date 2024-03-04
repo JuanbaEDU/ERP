@@ -5,25 +5,36 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './App.sass';
 
 // Importa tus componentes
+import IndexPage from './Index/IndexPage';
 import UserList from './User/UserList';
 import UserPage from './User/UserPage';
 import UserDetails from "./User/UserDetail";
+import { Link } from 'react-router-dom';
 
 function App() {
   let location = useLocation();
 
   return (
     <div className="App">
+      <div className='navigator'>
+        <nav>
+          <ul>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/users">Usuarios</Link></li>
+            <li><Link to="/contacto">Contacto</Link></li>
+          </ul>
+        </nav>
+      </div>
       <TransitionGroup>
         <UserPage>
           <Routes location={location}>
-            <Route path="/" element={
+            <Route path="/" exact element={
               <CSSTransition classNames="fade" timeout={300}>
-                <UserList />
+                <IndexPage />
               </CSSTransition>
             } />
-            <Route path="/user/list" element={<UserList />} />
-            <Route path="/user/:id" element={<UserDetails />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/users/:id" element={<UserDetails />} />
           </Routes>
         </UserPage>
       </TransitionGroup>

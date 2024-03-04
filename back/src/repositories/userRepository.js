@@ -1,17 +1,29 @@
 const db = require('../config/db');
 
+const getUserList = async (filters) => {
+    let query = 'SELECT * FROM users';
 
-const getUserList = async () => {
-    return new Promise((resolve, reject) => {
-        db.query("SELECT * FROM Users", (err, results) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results.rows);
-            }
-        });
-    });
-};
+    const conditions = [];
+    const values = [];
+    
+    if(filters){   
+        if (filters.email) {
+          conditions.push('email LIKE $1');
+          values.push(`%${filters.email}%`);
+        }
+      
+        if (filters.name) {
+          conditions.push('name LIKE $2');
+          values.push(`%${filters.name}%`);
+        }
+      
+        if (conditions.length > 0) {
+          query += ' WHERE ' + conditions.join(' AND ');
+        }  
+    }
+    return (await db.query(query, values)).rows;
+  };
+  
 
 const getUserById = async (id) => {
     return new Promise((resolve, reject) => {

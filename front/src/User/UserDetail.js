@@ -27,7 +27,7 @@ const UserDetails = () => {
     }, [id]); 
 
     const handleClick = () => {
-        navigate(`/user/list`);
+        navigate(`/users`);
     };
 
     if (!user) {

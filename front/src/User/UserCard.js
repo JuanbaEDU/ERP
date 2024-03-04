@@ -10,7 +10,7 @@ const UserCard = ({ user }) => {
     const handleClick = () => {
         setIsActive(true);
         setTimeout(() => {
-            navigate(`/user/${user.email}`);
+            navigate(`/users/${user.email}`);
         }, 400);
     };
 

@@ -8,8 +8,9 @@ const UserList = () => {
     const [filterText, setFilterText] = useState('');
 
     const fetchAndFilterUsers = useCallback(async () => {
-        let url = 'http://localhost:3003/api/user/';
-            url += filterText ? `filter/${filterText}` : 'list';
+        console.log("Hola");
+        let url = 'http://localhost:3003/api/users';
+            url += filterText ? `/${filterText}` : '';
 
         try {
             const response = await fetch(url);

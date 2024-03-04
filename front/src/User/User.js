@@ -2,7 +2,7 @@ export class User {
     Email = '';
 
     constructor(initializer = {}) {
-        if (initializer.Email) this.Email = initializer.Email;
+        if (initializer.email) this.Email = initializer.email;
     }
 
     get isNew() {

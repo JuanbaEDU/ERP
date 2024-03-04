@@ -1,4 +1,5 @@
 const userRepository = require('../../repositories/userRepository');
+const reportService = require('../../services/reportService');
 
 const getUser = async (req, res) => {
     try {
@@ -15,19 +16,9 @@ const getUser = async (req, res) => {
 };
 
 const getUsers = async (req, res) => {
+    const filter = req.query;
     try {
-        const users = await userRepository.getUserList();
-        res.json(users);
-    } catch (err) {
-        console.error('Error al obtener users:', err);
-        res.status(500).json({ message: 'Error al obtener users' });
-    }
-};
-
-const filterUsers = async (req, res) => {
-    try {
-        const filter = req.params.filter;
-        const users = await userRepository.getUserFilter(filter);
+        const users = await userRepository.getUserList(filter);
         res.json(users);
     } catch (err) {
         console.error('Error al obtener users:', err);
@@ -51,7 +42,21 @@ const createUser = async (req, res) => {
     }
 };
 
+const createReport = async (req, res) => {
+    try {
+        const users = await userRepository.getUserList();
+        const doc = await reportService.generateUserReport(users);
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename=report.pdf');
+
+        doc.pipe(res);
+        doc.end();
+    } catch (err) {
+        console.error('Error al generar el informe de usuarios:', err);
+        res.status(500).json({ message: 'Error al generar el informe de usuarios' });
+    }
+};
 
 
-
-module.exports = { getUsers, getUser, filterUsers, createUser };
+module.exports = { getUsers, getUser, createUser, createReport };
