@@ -10,7 +10,7 @@ yarn-error.log*
 /dist
 
 # Archivos de entorno
-.env
+back/.env
 
 # Archivos de configuración de IDE
 .idea
