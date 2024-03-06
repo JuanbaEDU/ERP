@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/app.js",
     "prod": "node src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate:db": "node ./src/migrations/create-database.js"
   },
   "author": "Juan Bautista Valero Carrasco",
   "license": "ISC",
