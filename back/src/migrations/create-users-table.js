@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-const con = require('../config/db'); // Importa la conexiÃ³n a la base de datos
+const con = require('../config/db'); // Importa la conexión a la base de datos
 
 async function createTable() {
   try {
@@ -9,11 +9,10 @@ async function createTable() {
         email VARCHAR(255) NOT NULL
       )
     `);
-    console.log('Tabla "users" creada con Ã©xito');
+    console.log('Tabla "users" creada con exito');
   } catch (error) {
     console.error('Error al crear la tabla "users":', error);
-  } finally {
-    con.end(); // Cierra la conexiÃ³n
+    con.end(); // Cierra la conexión
   }
 }
 
