@@ -9,7 +9,7 @@ async function createTable() {
         email VARCHAR(255) NOT NULL
       )
     `);
-    console.log('Tabla "users" creada con éxito');
+    console.log('Tabla "users" creada con exito');
   } catch (error) {
     console.error('Error al crear la tabla "users":', error);
   }

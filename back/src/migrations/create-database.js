@@ -27,10 +27,15 @@ con.connect(async (err) => {
     console.log('Database "erp" created');
 
     // Llama al archivo create-users-table.js
+
     await require('./create-users-table'); // Asegúrate de que la ruta sea correcta
 
     // Llama al archivo create-emloyees-table.js
     await require('./create-employees-table');
+
+    await require('./seed-users');  
+
+
   } catch (error) {
     console.error('Error creating database:', error);
   }
