@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./api/routes/userRoutes');
+const employeeRoutes = require('./api/routes/employeeRoutes');
 const otherRoutes = require('./api/routes/otherRoutes');
 const cors = require('cors');
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', userRoutes);
+app.use('/api', employeeRoutes);
 app.use('/api', otherRoutes);
 
 const port = process.env.PORT || 3003;
