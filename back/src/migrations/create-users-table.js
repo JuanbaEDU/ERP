@@ -12,8 +12,6 @@ async function createTable() {
     console.log('Tabla "users" creada con éxito');
   } catch (error) {
     console.error('Error al crear la tabla "users":', error);
-  } finally {
-    con.end(); // Cierra la conexión
   }
 }
 
